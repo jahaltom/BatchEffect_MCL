@@ -39,11 +39,12 @@ counts<-counts[ ,colnames(counts) %in% c('Gene_ID_ver',metadata_final$SampleID),
 # filter low expressed genes
 cpmdf<-cpm(counts %>% select(- c('Gene_ID_ver')))
 # keep genes at least 10 cpm in at least 100 samples
-tokeep<-rowSums(cpmdf > 1) >= 100
+tokeep<-rowSums(cpmdf >= 10) >= 100
+#tokeep<-rowSums(cpmdf > 1) >= 10
 # filter counts
 counts<-counts[tokeep,]
 print('After CPM filter')
-dim(counts)
+
 
 #add gene names as rownames
 rownames(counts)<-counts$Gene_ID_ver
@@ -51,14 +52,13 @@ gene_names<-counts$Gene_ID_ver
 fwrite(list(gene_names),"genenames_order.txt")
 counts$Gene_ID_ver <- NULL
 
-#rearrange metadata column to be identical as metadata
+#rearrange metadata rows to be identical as count
 metadata_final <- metadata_final[match(names(counts), metadata_final$SampleID),]
 rownames(metadata_final)<-metadata_final$SampleID
 all(rownames(metadata_final) == colnames(counts))
 fwrite(list(colnames(counts)),"samplenames_order.txt")
 
-dim(counts)
-dim(metadata_final)
+
 
 metadata_final$study_accession=metadata_final$study_accession %>% replace_na('MasaonAutopsy')
 print("running combat")
@@ -87,17 +87,3 @@ save.image(file="adjdata.RData")
 
 
 print("Done")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
