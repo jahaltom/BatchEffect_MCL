@@ -5,7 +5,7 @@ import numpy as np
 
 
 
-df=pd.read_csv("SarsCov2_adjusted_counts.tsv",sep='\t',skiprows=0)
+df=pd.read_csv(sys.argv[1],sep='\t',skiprows=0)
 gene_idVer=df['Gene_ID_ver'].tolist()
 df = df.set_index('Gene_ID_ver')
 npdf=df.to_numpy()
