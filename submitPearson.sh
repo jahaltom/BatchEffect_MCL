@@ -1,10 +1,11 @@
 #!/bin/bash
 #SBATCH -N 1
-#SBATCH -p huge
-#SBATCH --ntasks-per-node 40
-#SBATCH -t 48:00:00
-#SBATCH --mail-user=jahaltom@iastate.edu
+#SBATCH --ntasks-per-node 72
+#SBATCH -t 72:00:00
+#SBATCH --mail-user=haltomj@chop.edu
 #SBATCH --mail-type=ALL
+#SBATCH --mem=950G
+
 
 
 #load required modules
