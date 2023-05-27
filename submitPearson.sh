@@ -15,6 +15,8 @@ conda  activate pyrpipe_covid
 
 # run commands
 time python compute_pearson_sc.py SarsCov2_adjusted_counts.tsv  > scorrs.tsv
+#time python compute_pearson_sc.py SarsCov2_Regular_counts.tsv  > scorrs.tsv
+
 
 time awk -F '\t' '$3>=0.8' scorrs.tsv > scorrs_thresh_0.8.tsv
 time awk -F '\t' '$3>=0.85' scorrs.tsv > scorrs_thresh_0.85.tsv
