@@ -9,7 +9,7 @@
 
 #load required modules
 conda init bash
-conda  activate Ancestry
+conda  activate pyrpipe_covid
 #source ~/.bashrc
 
 
