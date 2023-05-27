@@ -78,7 +78,7 @@ fwrite(adjusteddt, "SarsCov2_adjusted_counts.tsv", row.names=F, quote=FALSE, sep
 counts <- as.data.table(counts)
 counts$Gene_ID_ver<-gene_names
 counts <- counts %>%  select(Gene_ID_ver, everything())
-fwrite(counts, "SarsCov2_adjusted_counts.tsv", row.names=F, quote=FALSE, sep="\t")
+fwrite(counts, "SarsCov2_Regular_counts.tsv", row.names=F, quote=FALSE, sep="\t")
 
 
 
