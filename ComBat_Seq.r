@@ -27,7 +27,7 @@ metadata=metadata[(metadata$'covid status-curated' == 'covid' | metadata$'covid 
 
 
 metadata_final <- metadata
-print("reading data")
+
  
 counts=fread("SarsCov2_Studies_Counts.tsv",sep="\t", header=TRUE, stringsAsFactors=FALSE, showProgress=TRUE, nThread=30)
 # limit counts to sample_name
@@ -43,7 +43,7 @@ tokeep<-rowSums(cpmdf >= 10) >= 100
 #tokeep<-rowSums(cpmdf > 1) >= 10
 # filter counts
 counts<-counts[tokeep,]
-print('After CPM filter')
+
 
 
 #add gene names as rownames
@@ -61,29 +61,27 @@ fwrite(list(colnames(counts)),"samplenames_order.txt")
 
 
 metadata_final$study_accession=metadata_final$study_accession %>% replace_na('MasaonAutopsy')
-print("running combat")
+#running combat
 #run combat seq
 #adjusted <- ComBat_seq(counts, batch=metadata_final$BatchID, group=metadata_final$bio_group)
 #adjusted <- ComBat_seq(counts, batch=metadata_final$BatchID, group=metadata_final$TissueType_details)
 adjusted <- ComBat_seq(as.matrix(counts), batch=metadata_final$study_accession,group=metadata_final$'covid status-curated')
 
-print(dim(adjusted))
 
-print("to data table")
+#AdjCounts to data table
 adjusteddt <- as.data.table(adjusted)
 adjusteddt$Gene_ID_ver<-gene_names
 adjusteddt <- adjusteddt %>%  select(Gene_ID_ver, everything())
-
-
-print("writing results")
-#save results
 fwrite(adjusteddt, "SarsCov2_adjusted_counts.tsv", row.names=F, quote=FALSE, sep="\t")
 
+#Reg Counts to data table
+counts <- as.data.table(counts)
+counts$Gene_ID_ver<-gene_names
+counts <- counts %>%  select(Gene_ID_ver, everything())
+fwrite(counts, "SarsCov2_adjusted_counts.tsv", row.names=F, quote=FALSE, sep="\t")
 
 
-print("saving image")
 
 save.image(file="adjdata.RData") 
 
 
-print("Done")
