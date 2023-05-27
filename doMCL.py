@@ -1,5 +1,5 @@
 import markov_clustering as mc
-import networkx as nx
+#import networkx as nx
 import random
 import sys
 import numpy as np
