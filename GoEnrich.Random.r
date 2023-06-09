@@ -11,7 +11,7 @@ df = read.csv('MCL', header=TRUE,sep='\t')
 cNum=0
 
 #Gather clusters > 1
-clusters=c()
+clustrsOrg=c()
 for (i in 1:nrow(df)){
      #Loop through rows (clusters) df[row,col]   
     cluster= unlist(strsplit(df[i,2], split = ";"))
@@ -22,12 +22,16 @@ for (i in 1:nrow(df)){
     
     if (length(cluster)>=10){
 
-    clusters=c(clusters,list(cluster))}
+    clustrsOrg=c(clustrsOrg,list(cluster))}
 }
+
+
 
 
 #100 interations!
 for (iteration in 1:100){
+        
+    clusters=clustrsOrg
     #Randomize clusters with 100K gene swaps
     for (i in 1:100000){
         #Two random clusters
@@ -103,8 +107,4 @@ for (iteration in 1:100){
 
 
 }
-
-
-
-
 
