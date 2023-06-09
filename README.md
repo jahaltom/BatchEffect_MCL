@@ -73,9 +73,26 @@ The mean of the best p.adjust for each cluster is recorded.
 This is done for 100 iterations. The 100 means will be ploted along with the Experimental.
 
 
+### Run all with submit.sh and submit.Random.sh
 
 
+```
+mkdir results
 
+
+cat list | while read i;do
+    cat GoEnrich.r | sed "s/MCL/$i/g" > $i.GoEnrich.r
+    cat submit.sh | sed "s/GoEnrich.r/$i.GoEnrich.r/g" > $i.submit.sh
+    sbatch $i.submit.sh
+done
+
+
+cat list | while read i;do
+    cat GoEnrich.Random.r | sed "s/MCL/$i/g" > $i.GoEnrich.Random.r
+    cat submit.Random.sh | sed "s/GoEnrich.Random.r/$i.GoEnrich.Random.r/g" > $i.submit.Random.sh
+    sbatch $i.submit.Random.sh
+done
+```
 
 
 
