@@ -9,7 +9,6 @@ counts: AllCovid/SarsCov2_Studies_Counts.tsv
 ```
  
 ## Gene-Gene correlation matrix and Markov Chain Clustering
-
 ## submitPearson.sh and submitSpearman.sh: Main workflow scripts. These do the folowing:
 
 # gene-Gene correlation matrix
@@ -30,6 +29,7 @@ Each resulting file from above is ran through doMCL.py which generates the gene 
 
 ## Go Enrichment with clusterProfiler
 
+# Experimental GoEnrich.r
 For each cluster, the SarsCov2 genes and EB genes are removed. Then clusteres with  >= 10 genes left are kept. The resulting gene clusteres are ran through "enrichGO" 
 ```
 gse=enrichGO(
@@ -50,3 +50,43 @@ gse=enrichGO(
 For each cluster, sig results are exported. 
 
 The mean of the best p.adjust for each cluster is recorded. 
+
+# Random GoEnrich.Random.r
+
+Same as above except there is no sig results exported, and the clusteres are randomized after the ">=10"  step (prior to "enrichGO"). 
+
+* Randomization: Two random cluteres are pulled out and a single random gene from each cluster are swapped. This is done 100K times. 
+
+The mean of the best p.adjust for each cluster is recorded.
+
+This is done for 100 iterations. The 100 means will be ploted along with the Experimental.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
