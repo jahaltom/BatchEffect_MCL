@@ -1,4 +1,13 @@
 
+### Predicting the function of human evidence based genes involved in SarsCov2.
+
+Human transcriptome(GencodeV36), SARS-COV-2 transcriptome (ASM985889v3), and human evidence based (EB) gene transcripts were used for transcriptome mapping (https://github.com/jahaltom/COVID-19-Quantification/tree/main) using 66 human SarsCov2 RNA-Seq studies (3,413 samples). To increase mapping accuracy, the human genome along with viral decoys and spike-ins from the Genomic Data Commons (GRCh38.d1.vd1) were used as decoys for Salmon. 
+
+This massive amount of RNA-Seq expression data can be mined to look for EB co-expression with annotated genes and this can shed insights into EB gene function. The co-expression can be elucidated by performing gene-gene correlation analysis, in this case we performed spearman and pearson. We did this with both raw counts and ComBatSeq batch corrected counts. The subsequent correlation matrices can then be put through Markov Chain Clustering (MCL) to find clusters of genes with correlated expression across the whole transcriptome. The annotated genes, tied to the EB genes, in the MCL clusters can be ran through GoEnrichment analysis to determine possible EB gene functions. 
+
+This method is further established by taking the exact same clusters and randomly shuffling the genes throughout the clusters ( keeping the number of clusters and number of genes within each cluster the same) for 100 iterations. Performing GoEnrichment analysis on these randomized clusters reviled significantly less enrichment. 
+
+
 
 ## Batch correction ComBatSeq
 
