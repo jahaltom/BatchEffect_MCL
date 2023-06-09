@@ -27,7 +27,7 @@ counts: AllCovid/SarsCov2_Studies_Counts.tsv
 *  compute_pearson_sc.py and compute_spearman_sc.py: Take in SarsCov2_adjusted_counts.tsv or SarsCov2_Regular_counts.tsv from ComBat_Seq.r, and calculate the gene-gene pearson and spearman correlation matrix (respectfully). Outputs 3 column file (gene1IDVer   gene2IDVer  corr)
 
 * For each matrix:
-  * 3 files are generated from cutoffs (0.8, 0.85, 0.9) 
+  * 3 files are generated from corr cutoffs (0.8, 0.85, 0.9) 
   * each resulting file is annotated by gene names (was gene ID Ver) using add_gene_names.py. Needs Gene_level_metadata.tsv. Outputs 3 column file (gene1Name   gene2Name  corr).
 
 ### Markov Chain Clustering
