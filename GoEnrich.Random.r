@@ -29,8 +29,7 @@ for (i in 1:nrow(df)){
 
 
 #100 interations!
-for (iteration in 1:100){
-        
+for (iteration in 1:100){    
     clusters=clustrsOrg
     #Randomize clusters with 100K gene swaps
     for (i in 1:100000){
@@ -107,4 +106,3 @@ for (iteration in 1:100){
 
 
 }
-
