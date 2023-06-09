@@ -12,6 +12,8 @@ This method is further established by taking the exact same clusters and randoml
 ## Batch correction ComBatSeq
 
 * ComBat_Seq.r: Takes in SarsCov2 counts (filteres to keep genes with at least 10 cpm in at least 100 samples) and assosisated metadata. Performs batch correction using study as "batch" and "group" as covid status. Outputs SarsCov2_adjusted_counts.tsv and SarsCov2_Regular_counts.tsv. 
+
+ComBat_Seq.r input:
 ```
 metadata: All covid/non-covid data from AllCovid/CovidMetadata.xlsx.
 counts: AllCovid/SarsCov2_Studies_Counts.tsv
