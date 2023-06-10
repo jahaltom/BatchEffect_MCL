@@ -8,8 +8,7 @@ library(organism, character.only = TRUE)
 
 df = read.csv('MCL', header=TRUE,sep='\t')
 
-#Keep track of the number of clusters analized
-cNum=0
+
         
 #For storing best p.adjust
 padj=c()
@@ -22,8 +21,7 @@ for (i in 1:nrow(df)){
 
     if (length(cluster)>=10){
    
-        #Keep track of the number of clusters analized
-        cNum=cNum+1
+
         gse=enrichGO(
         cluster,
         OrgDb=organism,
@@ -58,7 +56,6 @@ bestAvg=mean(padj)
 
 
 #Write output
-fileConn<-file("results/MCL_output.txt","a")
-writeLines(paste("Mean of the best p-values:",bestAvg), fileConn)
-writeLines(paste("total clusters analized:",cNum), fileConn)
+fileConn<-file("results/MCL_BestPValue.txt","a")
+writeLines(bestAvg, fileConn)
 close(fileConn)
