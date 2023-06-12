@@ -105,28 +105,43 @@ done
 
 
 ## R PLots
-
+```
 #For each output.Random.txt and output.txt
 ls *txt* | cat | sed 's/_output.Random.txt//g' | sed 's/_output.txt//g' | sort  | uniq > files
 
 
 
 
-mv script.r Plots.r
+
 cat files | while read i;do
     cat "$i"_output.Random.txt | grep Mean | awk '{print $NF}' > rand
     cat "$i"_output.txt | grep Mean | awk '{print $NF}' > exp
     sed "s/FILE/$i/g" Plots.r > $i.Plots.r
     Rscript $i.Plots.r
 done
+```
+
+
+
+## GoTerm analysis
+```
+#Gather all clusters that contain EB genes
+cat scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.9 | grep "EB.chr" | awk '{print $1}' > EB_Clusters
+
+#Loop though clusters that contain EBs and pull top 2 Go terms
+cat EB_Clusters | while read i;do
+	cat scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.9_Cluster_"$i"_GoEnrichmentResults | head -3 >> GoTerms
+done
+
+
+#Filter and analize. 
+awk -F'\t' '{print $3}' GoTerms | grep -v "GeneRatio" | sort | uniq 
 
 
 
 
 
-
-
-
+```
 
 
 
