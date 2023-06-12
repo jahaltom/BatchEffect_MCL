@@ -104,8 +104,21 @@ done
 
 
 
+## R PLots
+
+#For each output.Random.txt and output.txt
+ls *txt* | cat | sed 's/_output.Random.txt//g' | sed 's/_output.txt//g' | sort  | uniq > files
 
 
+
+
+mv script.r Plots.r
+cat files | while read i;do
+    cat "$i"_output.Random.txt | grep Mean | awk '{print $NF}' > rand
+    cat "$i"_output.txt | grep Mean | awk '{print $NF}' > exp
+    sed "s/FILE/$i/g" Plots.r > $i.Plots.r
+    Rscript $i.Plots.r
+done
 
 
 
