@@ -98,7 +98,7 @@ for (iteration in 1:100){
     
     #Write output
     fileConn<-file("results/MCL_BestPValue.Random.txt","a")
-    writeLines(bestAvg, fileConn)
+    writeLines(as.character(bestAvg), fileConn)
     close(fileConn)
 
 
