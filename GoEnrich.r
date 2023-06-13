@@ -57,5 +57,5 @@ bestAvg=mean(padj)
 
 #Write output
 fileConn<-file("results/MCL_BestPValue.txt","a")
-writeLines(bestAvg, fileConn)
+writeLines(as.character(bestAvg), fileConn)
 close(fileConn)
