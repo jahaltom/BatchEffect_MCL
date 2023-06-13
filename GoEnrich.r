@@ -41,7 +41,7 @@ for (i in 1:nrow(df)){
             padj=c(padj,min(gse$p.adjust))
             
             result=gse@result
-            write.table(result,paste("results/MCL_Cluster",i,"GoEnrichmentResults",sep="_"),sep = '\t',row.names = TRUE)
+            write.table(result,paste("results/MCL_Cluster",as.character(df[i,1]),"GoEnrichmentResults",sep="_"),sep = '\t',row.names = TRUE)
     
             
             }
