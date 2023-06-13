@@ -128,18 +128,7 @@ done
 #Gather all clusters that contain EB genes
 cat scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.9 | grep "EB.chr" | awk '{print $1}' > EB_Clusters
 
-#Loop though clusters that contain EBs and pull top 2 Go terms
-cat EB_Clusters | while read i;do
-	cat scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.9_Cluster_"$i"_GoEnrichmentResults | head -3 >> GoTerms
-done
-
-
-#Filter and analize. 
-awk -F'\t' '{print $3}' GoTerms | grep -v "GeneRatio" | sort | uniq 
-
-
-
-
+Rscript ClusterGo.r
 
 ```
 
