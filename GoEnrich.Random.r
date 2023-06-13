@@ -9,7 +9,7 @@ library(organism, character.only = TRUE)
 df = read.csv('MCL', header=TRUE,sep='\t')
 
 
-#Gather clusters > 1
+#Gather clusters >= 10
 clustrsOrg=c()
 for (i in 1:nrow(df)){
      #Loop through rows (clusters) df[row,col]   
