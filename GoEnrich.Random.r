@@ -25,20 +25,21 @@ for (i in 1:nrow(df)){
     annList=c(annList,cluster)
 }
 
-#Randomize list of all annoated genes
-annList=sample(annList)
+
 #Remove empty clusters
 clustrsOrg=clustrsOrg[lapply(clustrsOrg,length)>0]
 
 
-clustrsOrgR=clustrsOrg
 
 #For 100 interations!
-for (iteration in 1:100){      
+for (iteration in 1:100){  
+    #Randomize list of all annoated genes
+    annListR=sample(annList)
+    clustrsOrgR=clustrsOrg  
     start=1
     for (c in 1:length(clustrsOrgR)){
             cLength=length(unlist(clustrsOrgR[c[1]]))
-            clustrsOrgR[c[1]]=list(annList[start:(cLength+start-1)])
+            clustrsOrgR[c[1]]=list(annListR[start:(cLength+start-1)])
             start=start+cLength
 }   
        
