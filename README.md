@@ -41,7 +41,7 @@ Each resulting file from above is ran through doMCL.py which generates the gene 
 ## Go Enrichment with clusterProfiler
 
 ### Experimental: GoEnrich.r
-For each cluster, the SarsCov2 genes and EB genes are removed. Then clusteres with  >= 10 genes left are kept. The resulting gene clusteres are ran through "enrichGO" 
+For each cluster, the SarsCov2 genes and EB genes are removed. The resulting gene clusteres are ran through "enrichGO" 
 ```
 gse=enrichGO(
         cluster,
@@ -64,9 +64,9 @@ The mean of the best p.adjust for each cluster is recorded.
 
 ### Random: GoEnrich.Random.r
 
-Same as above except there is no sig results exported, and the clusteres are randomized after the ">=10"  step (prior to "enrichGO"). 
+Same as above except there is no sig results exported, and the clusteres are randomized. 
 
-* Randomization: Two random cluteres are pulled out and a single random gene from each cluster are swapped. This is done 100K times. 
+* Randomization: All genes from all clusters are extracted and randomized into a list. Then each cluster is repopulated with the randomized gene list, keeping the cluster sizes the same as the original.
 
 The mean of the best p.adjust for each cluster is recorded.
 
