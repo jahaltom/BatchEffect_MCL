@@ -19,33 +19,33 @@ for (i in 1:nrow(df)){
     cluster=cluster[!cluster %in% grep(paste0("EB.chr", collapse = "|"), cluster, value = T)]
     cluster=cluster[!cluster %in% grep(paste0("SarsCov2", collapse = "|"), cluster, value = T)]
 
-    if (length(cluster)>=10){
+
    
 
-        gse=enrichGO(
-        cluster,
-        OrgDb=organism,
-        keyType = "SYMBOL",
-        ont = "BP",
-        pvalueCutoff = 0.05,
-        pAdjustMethod = "BH",
-        qvalueCutoff = 0.2,
-        minGSSize = 10,
-        maxGSSize = 500,
-        readable = FALSE,
-        pool = FALSE
-        )
+    gse=enrichGO(
+    cluster,
+    OrgDb=organism,
+    keyType = "SYMBOL",
+    ont = "BP",
+    pvalueCutoff = 0.05,
+    pAdjustMethod = "BH",
+    qvalueCutoff = 0.2,
+    minGSSize = 10,
+    maxGSSize = 500,
+    readable = FALSE,
+    pool = FALSE
+    )
+    
+    #Get min p-value for each cluster. If there are any. Save reuslts. 
+    if (length(gse$p.adjust) != 0){
+        padj=c(padj,min(gse$p.adjust))
         
-        #Get min p-value for each cluster. If there are any. Save reuslts. 
-        if (length(gse$p.adjust) != 0){
-            padj=c(padj,min(gse$p.adjust))
-            
-            result=gse@result
-            write.table(result,paste("results/MCL_Cluster",as.character(df[i,1]),"GoEnrichmentResults",sep="_"),sep = '\t',row.names = TRUE)
+        result=gse@result
+        write.table(result,paste("results/MCL_Cluster",as.character(df[i,1]),"GoEnrichmentResults",sep="_"),sep = '\t',row.names = TRUE)
     
             
             }
-    }
+
     
  }
 
