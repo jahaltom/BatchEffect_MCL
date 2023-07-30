@@ -44,6 +44,10 @@ tokeep<-rowSums(cpmdf >= 10) >= 100
 # filter counts
 counts<-counts[tokeep,]
 
+#EB.chr12G3631, EB.chr4G15922, EB.chr7G54834
+counts=counts[!grepl("EB.chr12G3631", counts$Gene_ID_ver),]
+counts=counts[!grepl("EB.chr4G15922", counts$Gene_ID_ver),]
+counts=counts[!grepl("EB.chr7G54834", counts$Gene_ID_ver),]
 
 
 #add gene names as rownames
