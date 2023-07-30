@@ -28,12 +28,16 @@ metadata=metadata[(metadata$'covid status-curated' == 'covid' | metadata$'covid 
 
 metadata_final <- metadata
 
- 
+
 counts=fread("SarsCov2_Studies_Counts.tsv",sep="\t", header=TRUE, stringsAsFactors=FALSE, showProgress=TRUE, nThread=30)
 # limit counts to sample_name
 #counts<-counts[ ,colnames(counts) %in% c('Gene_ID_ver',sample_names$V1), with=FALSE]
 counts<-counts[ ,colnames(counts) %in% c('Gene_ID_ver',metadata_final$SampleID), with=FALSE]
 
+#EB.chr12G3631, EB.chr4G15922, EB.chr7G54834
+counts=counts[!grepl("EB.chr12G3631", counts$Gene_ID_ver),]
+counts=counts[!grepl("EB.chr4G15922", counts$Gene_ID_ver),]
+counts=counts[!grepl("EB.chr7G54834", counts$Gene_ID_ver),]
 
 
 # filter low expressed genes
@@ -44,10 +48,6 @@ tokeep<-rowSums(cpmdf >= 10) >= 100
 # filter counts
 counts<-counts[tokeep,]
 
-#EB.chr12G3631, EB.chr4G15922, EB.chr7G54834
-counts=counts[!grepl("EB.chr12G3631", counts$Gene_ID_ver),]
-counts=counts[!grepl("EB.chr4G15922", counts$Gene_ID_ver),]
-counts=counts[!grepl("EB.chr7G54834", counts$Gene_ID_ver),]
 
 
 #add gene names as rownames
@@ -86,6 +86,4 @@ fwrite(counts, "SarsCov2_Regular_counts.tsv", row.names=F, quote=FALSE, sep="\t"
 
 
 
-save.image(file="adjdata.RData") 
-
-
+save.image(file="adjdata.RData")
