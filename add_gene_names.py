@@ -8,10 +8,10 @@ genedict={}
 with open(genemd) as fi:
     for l in fi:
         tmp=l.split('\t')
-        genedict[tmp[23]]=tmp[2]
+        genedict[tmp[22]]=tmp[1]
 
 ind=0
-with open(sys.argv[1]) as fi:
+with open("scorrs_thresh_0.8.tsv") as fi:
     for line in fi:
         l=line.strip()
         if ind==0:
@@ -22,4 +22,3 @@ with open(sys.argv[1]) as fi:
         tmp[0]=genedict[tmp[0]]
         tmp[1]=genedict[tmp[1]]
         print('\t'.join(tmp))
-
