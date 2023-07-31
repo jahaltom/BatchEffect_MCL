@@ -11,7 +11,7 @@ with open(genemd) as fi:
         genedict[tmp[22]]=tmp[1]
 
 ind=0
-with open("scorrs_thresh_0.8.tsv") as fi:
+with open(sys.argv[1]) as fi:
     for line in fi:
         l=line.strip()
         if ind==0:
