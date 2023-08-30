@@ -22,6 +22,7 @@ counts: AllCovid/SarsCov2_Studies_Counts.tsv
 ## Gene-Gene correlation matrix and Markov Chain Clustering
 ## submitPearson.sh and submitSpearman.sh: Main workflow scripts. These do the folowing:
 
+each combonation (Person/spearman regular/adjusted counts = 4 total)  need own dir. 
 ### gene-Gene correlation matrix
 
 *  compute_pearson_sc.py and compute_spearman_sc.py: Take in SarsCov2_adjusted_counts.tsv or SarsCov2_Regular_counts.tsv from ComBat_Seq.r, and calculate the gene-gene pearson and spearman correlation matrix (respectfully). Outputs 3 column  (gene1IDVer   gene2IDVer  corr) file:  scorrs.tsv.
