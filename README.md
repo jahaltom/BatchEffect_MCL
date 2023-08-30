@@ -24,15 +24,15 @@ counts: AllCovid/SarsCov2_Studies_Counts.tsv
 
 ### gene-Gene correlation matrix
 
-*  compute_pearson_sc.py and compute_spearman_sc.py: Take in SarsCov2_adjusted_counts.tsv or SarsCov2_Regular_counts.tsv from ComBat_Seq.r, and calculate the gene-gene pearson and spearman correlation matrix (respectfully). Outputs 3 column file (gene1IDVer   gene2IDVer  corr) scorrs.tsv.
+*  compute_pearson_sc.py and compute_spearman_sc.py: Take in SarsCov2_adjusted_counts.tsv or SarsCov2_Regular_counts.tsv from ComBat_Seq.r, and calculate the gene-gene pearson and spearman correlation matrix (respectfully). Outputs 3 column  (gene1IDVer   gene2IDVer  corr) file:  scorrs.tsv.
 
 * For each matrix:
-  * 3 files are generated from corr cutoffs (0.8, 0.85, 0.9) scorrs_thresh_0.9.tsv scorrs_thresh_0.8.tsv scorrs_thresh_0.85.tsv
-  * each resulting file is annotated by gene names (was gene ID Ver) using add_gene_names.py. Needs Gene_level_metadata.tsv. Outputs 3 column file (gene1Name   gene2Name  corr). scorrs_thresh_0.9_renamed.tsv scorrs_thresh_0.8_renamed.tsv scorrs_thresh_0.85_renamed.tsv
+  * 3 files are generated from corr cutoffs (0.8, 0.85, 0.9): scorrs_thresh_0.9.tsv, scorrs_thresh_0.8.tsv, scorrs_thresh_0.85.tsv
+  * each resulting file is annotated by gene names (was gene ID Ver) using add_gene_names.py. Needs Gene_level_metadata.tsv. Outputs 3 column (gene1Name   gene2Name  corr) files: scorrs_thresh_0.9_renamed.tsv, scorrs_thresh_0.8_renamed.tsv, scorrs_thresh_0.85_renamed.tsv.
 
 ### Markov Chain Clustering
 
-Each resulting file from above is ran through doMCL.py which generates the gene clusters in a 2 column file (ClusterID       Genes).  scorrs_thresh_0.9_renamed.tsv_mclout_inf_1.5 scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.5 scorrs_thresh_0.85_renamed.tsv_mclout_inf_1.5
+Each resulting file from above is ran through doMCL.py which generates the gene clusters in a 2 column (ClusterID       Genes) files:  scorrs_thresh_0.9_renamed.tsv_mclout_inf_1.5, scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.5, scorrs_thresh_0.85_renamed.tsv_mclout_inf_1.5.
 
 
 
