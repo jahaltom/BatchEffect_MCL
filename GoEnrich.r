@@ -15,7 +15,7 @@ padj=c()
 for (i in 1:nrow(df)){
      #Loop through rows (clusters) df[row,col]   
     cluster= unlist(strsplit(df[i,2], split = ";"))
-    if (length(cluster)>=2){
+    if (length(cluster)>=10){
         #Remove EB and SarsCov2.   
         cluster=cluster[!cluster %in% grep(paste0("EB.chr", collapse = "|"), cluster, value = T)]
         cluster=cluster[!cluster %in% grep(paste0("SarsCov2", collapse = "|"), cluster, value = T)]
