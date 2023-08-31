@@ -6,7 +6,7 @@ BiocManager::install(organism, character.only = TRUE)
 library(organism, character.only = TRUE)
 
 
-df = read.csv('MCL', header=TRUE,sep='\t')
+df = read.csv('scorrs_thresh_0.9_renamed.tsv_mclout_inf_1.5', header=TRUE,sep='\t')
 
 
 #Gather clusters of annoated genes
@@ -17,12 +17,13 @@ for (i in 1:nrow(df)){
      #Loop through rows (clusters) df[row,col]   
     cluster= unlist(strsplit(df[i,2], split = ";"))
     
-    #Remove EB and SarsCov2
-    cluster=cluster[!cluster %in% grep(paste0("EB.chr", collapse = "|"), cluster, value = T)]
-    cluster=cluster[!cluster %in% grep(paste0("SarsCov2", collapse = "|"), cluster, value = T)]
-    
-    clustrsOrg=c(clustrsOrg,list(cluster))
-    annList=c(annList,cluster)
+    if (length(cluster)>=2){
+        #Remove EB and SarsCov2
+        cluster=cluster[!cluster %in% grep(paste0("EB.chr", collapse = "|"), cluster, value = T)]
+        cluster=cluster[!cluster %in% grep(paste0("SarsCov2", collapse = "|"), cluster, value = T)]
+
+        clustrsOrg=c(clustrsOrg,list(cluster))
+        annList=c(annList,cluster)}
 }
 
 
@@ -42,7 +43,7 @@ for (iteration in 1:100){
             clustrsOrgR[c[1]]=list(annListR[start:(cLength+start-1)])
             start=start+cLength
 }   
-       
+        
     #Go Enricment
      
     #For storing best p.adjust
