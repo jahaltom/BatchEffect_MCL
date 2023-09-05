@@ -6,7 +6,7 @@ BiocManager::install(organism, character.only = TRUE)
 library(organism, character.only = TRUE)
 
 
-df = read.csv('scorrs_thresh_0.9_renamed.tsv_mclout_inf_1.5', header=TRUE,sep='\t')
+df = read.csv('MCL', header=TRUE,sep='\t')
 
 
 #Gather clusters of annoated genes
