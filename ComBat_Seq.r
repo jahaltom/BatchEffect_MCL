@@ -69,7 +69,7 @@ metadata_final$study_accession=metadata_final$study_accession %>% replace_na('Ma
 #run combat seq
 #adjusted <- ComBat_seq(counts, batch=metadata_final$BatchID, group=metadata_final$bio_group)
 #adjusted <- ComBat_seq(counts, batch=metadata_final$BatchID, group=metadata_final$TissueType_details)
-adjusted <- ComBat_seq(as.matrix(counts), batch=metadata_final$study_accession,group=metadata_final$'covid status-curated')
+adjusted <- ComBat_seq(as.matrix(counts), batch=metadata_final$study_accession)
 
 
 #AdjCounts to data table
@@ -87,3 +87,5 @@ fwrite(counts, "SarsCov2_Regular_counts.tsv", row.names=F, quote=FALSE, sep="\t"
 
 
 save.image(file="adjdata.RData")
+
+
