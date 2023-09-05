@@ -42,7 +42,7 @@ Each resulting file from above is ran through doMCL.py which generates the gene 
 ## Go Enrichment with clusterProfiler
 
 ### Experimental: GoEnrich.r
-For each cluster, the SarsCov2 genes and EB genes are removed. The resulting gene clusteres are ran through "enrichGO" 
+For each cluster, the SarsCov2 genes and EB genes are removed. Then the clusters are filtered to contain at least 10 known genes. The resulting gene clusteres are ran through "enrichGO" 
 ```
 gse=enrichGO(
         cluster,
