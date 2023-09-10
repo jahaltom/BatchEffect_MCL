@@ -127,8 +127,8 @@ done
 
 
 ## GoTerm analysis
+Read in desiered Markov Chain Clustering file (e.g. PerCountAdj/scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.9) and gather top 10 Goterms and associated genes-cluster information.
 ```
-#Read in desiered Markov Chain Clustering file (e.g. PerCountAdj/scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.9) and gather top 10 Goterms and assosiated genes-cluster information.
 Python ClusterGo.py
 
 ```
