@@ -4,8 +4,8 @@ library(ggplot2)
 
 
 #Read in quant. Modified gene name will be rownames, see README.txt.
-rand = read.table("rand",header=FALSE,sep = '\t',quote="",check.names=FALSE)
-exp = read.table("exp",header=FALSE,sep = '\t',quote="",check.names=FALSE)
+rand = read.table("FILE_BestPValue.Random.txt",header=FALSE,sep = '\t',quote="",check.names=FALSE)
+exp = read.table("FILE_BestPValue.txt",header=FALSE,sep = '\t',quote="",check.names=FALSE)
 
 
 
