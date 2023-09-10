@@ -128,10 +128,8 @@ done
 
 ## GoTerm analysis
 ```
-#Gather all clusters that contain EB genes
-cat scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.9 | grep "EB.chr" | awk '{print $1}' > EB_Clusters
-
-Rscript ClusterGo.r
+#Read in desiered Markov Chain Clustering file (e.g. PerCountAdj/scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.9) and gather top 10 Goterms and assosiated genes-cluster information.
+Python ClusterGo
 
 ```
 
