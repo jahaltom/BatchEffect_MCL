@@ -78,6 +78,11 @@ This is done for 100 iterations. The 100 means will be ploted along with the Exp
 
 
 ```
+#list contains a 1 column list of 3 output files from Markov Chain Clustering:
+scorrs_thresh_0.9_renamed.tsv_mclout_inf_1.5
+scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.5
+scorrs_thresh_0.85_renamed.tsv_mclout_inf_1.5.
+
 mkdir results
 
 
@@ -107,16 +112,13 @@ done
 
 ## R PLots
 ```
+Move to results dir.
 #For each output.Random.txt and output.txt
-ls *txt* | cat | sed 's/_output.Random.txt//g' | sed 's/_output.txt//g' | sort  | uniq > files
-
-
+ls *txt* | cat | sed 's/_BestPValue.Random.txt//g' | sed 's/_BestPValue.txt//g' | sort  | uniq > files
 
 
 
 cat files | while read i;do
-    cat "$i"_output.Random.txt | grep Mean | awk '{print $NF}' > rand
-    cat "$i"_output.txt | grep Mean | awk '{print $NF}' > exp
     sed "s/FILE/$i/g" Plots.r > $i.Plots.r
     Rscript $i.Plots.r
 done
