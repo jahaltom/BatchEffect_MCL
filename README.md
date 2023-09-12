@@ -78,10 +78,13 @@ This is done for 100 iterations. The 100 means will be ploted along with the Exp
 
 
 ```
+
 #list contains a 1 column list of 3 output files from Markov Chain Clustering:
 scorrs_thresh_0.9_renamed.tsv_mclout_inf_1.5
 scorrs_thresh_0.8_renamed.tsv_mclout_inf_1.5
 scorrs_thresh_0.85_renamed.tsv_mclout_inf_1.5.
+
+ls *mcl* | cat > list
 
 mkdir results
 
