@@ -22,14 +22,14 @@ for i in clusters:
         cluster=clusterFile[clusterFile["ClusterID"]==i]         
         goFile["Cluster"]=cluster["ClusterID"].tolist()[0]
         goFile["Genes"]=cluster["Genes"].tolist()[0]
-        goFile["# of gene sin cluster"]=len(cluster["Genes"].tolist()[0].split(";"))
+        goFile["# of genes in cluster"]=len(cluster["Genes"].tolist()[0].split(";"))
         #Append to master list
         go.append(goFile)
     except:
         #Gather cluster info (ClusterID, Genes) and add to GoTerm info for the same cluster. 
         cluster=clusterFile[clusterFile["ClusterID"]==i]         
         cluster = cluster.rename(columns={'ClusterID': 'Cluster'})
-        cluster["# of gene sin cluster"]=len(cluster["Genes"].tolist()[0].split(";"))
+        cluster["# of genes in cluster"]=len(cluster["Genes"].tolist()[0].split(";"))
         #Append to master list
         go.append(cluster)
         
